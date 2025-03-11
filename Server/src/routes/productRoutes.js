@@ -10,15 +10,17 @@ import {
     deleteProduct
 } from "../controllers/productController.js";
 
+import { authenticate,checkAdmin } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
-router.get("/api/products/latest", latestProducts);
-router.post("/api/products", addProduct);
-router.get("/api/products", getAllProducts);
-router.get("/api/products/category/:id", getProductsByCategory);
-router.get("/api/products/:id", getProductById);
-router.put("/api/products/:id", updateProduct);
-router.delete("/api/products/:id", deleteProduct);
-router.patch("/api/products/toggle/:id", toggleLatestProduct);
+router.get("/latest",authenticate,latestProducts);  //fetch latest collection products
+router.put("/:id/latest",authenticate,checkAdmin,toggleLatestProduct);//toggle latest collection status (admin)
+router.get("/",authenticate,getAllProducts);  //fetch all products
+router.get("/category/:id",authenticate,getProductsByCategory);  // fetch product by catogory
+router.get("/:id",authenticate,getProductById,);  // fetch single product
+// admin routes
+router.post("/",authenticate,checkAdmin,addProduct);  // add new product via admin
+router.put("/:id",authenticate,checkAdmin,updateProduct); // update product via admin  
+router.delete("/:id",authenticate,checkAdmin,deleteProduct); // delete product via admin 
 
 export default router;

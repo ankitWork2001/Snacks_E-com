@@ -7,10 +7,6 @@ import paymentRoutes from "./routes/paymentRoutes.js";
 
 const app = express();
 
-app.use("/api/users", userRoutes);
-app.use("/api/products", productRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/payments', paymentRoutes);
 
 app.use(express.json());
 
@@ -22,3 +18,9 @@ connectDB().then(() => {
 }).catch((err) => {
     console.log("Error", err);
 });
+
+app.use("/api/auth",userRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/payments', paymentRoutes);

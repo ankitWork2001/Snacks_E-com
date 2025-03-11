@@ -5,12 +5,13 @@ import {
     placeOrder,
     updateOrderStatus
 } from '../controllers/orderController.js';
-
+import { authenticate,checkAdmin } from '../middlewares/authMiddleware.js';
 const router = express.Router();
 
-router.get('/orders', getAllOrders);
-router.get('/orders/:id', getOrderById);
-router.post('/orders', placeOrder);
-router.put('/orders/:id/status', updateOrderStatus);
+router.get("/",authenticate,checkAdmin,getAllOrders); // fetch all orders via admin  
+router.get("/:id",authenticate,getOrderById); // fetch specific order  
+router.post("/",authenticate,placeOrder); // place new order  
+router.put("/:id",authenticate,checkAdmin,updateOrderStatus); // update order status via admin
+
 
 export default router;
