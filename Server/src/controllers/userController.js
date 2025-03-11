@@ -40,8 +40,10 @@ const login=async(req,res)=>{
         if(!user){
             return res.status(200).json({message:"User not found"});
         }
-        if(!User.isPasswordCorrect(password)){
-            return res.status(200).json({message:"Invalid Credentials"});
+        const isPasswordValid = await user.isPasswordCorrect(password);
+        
+        if (!isPasswordValid) {
+            return res.status(200).json({ message: "Invalid Credentials" });
         }
         const token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'7d'});
         
