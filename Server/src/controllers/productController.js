@@ -168,10 +168,6 @@ const latestProducts = async (req, res) => {
       console.error("Error deleting product:", error);
       return res.status(500).json({ message: "Internal Server Error" });
     }
-  };
-  
- 
-  
-  
+  };  
 
-  export {latestProducts,toggleLatestProduct,getAllProducts,getProductsByCategory,getProductById,addProduct,updateProduct,deleteProduct}
+export {latestProducts,toggleLatestProduct,getAllProducts,getProductsByCategory,getProductById,addProduct,updateProduct,deleteProduct}

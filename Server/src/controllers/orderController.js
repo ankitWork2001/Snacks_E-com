@@ -23,8 +23,7 @@ const getAllOrders = async (req, res) => {
   const getOrderById = async (req, res) => {
     try {
       const orderId = req.params.id; 
-  
-      
+        
       if (!orderId) {
         return res.status(400).json({ message: "Order ID is required" });
       }
