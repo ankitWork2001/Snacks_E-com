@@ -7,8 +7,11 @@ import paymentRoutes from "./routes/paymentRoutes.js";
 
 const app = express();
 
-
 app.use(express.json());
+
+app.get("/", (req,res)=>{
+    res.send("Server is running");
+})
 
 connectDB().then(() => {
     console.log(process.env.MONGO_URL);
