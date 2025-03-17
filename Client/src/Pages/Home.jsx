@@ -1,9 +1,12 @@
 import React from 'react';
+import Navbar from '../Components/Navbar';
+import HomeCarousel from '../Components/homeCarousel';
 
 const Home = () => {
   return (
     <div>
-      Hello Home
+      <Navbar/>
+      <HomeCarousel/>
     </div>
   );
 }
