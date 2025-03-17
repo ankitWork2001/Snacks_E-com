@@ -1,8 +1,11 @@
 import React from "react";
 import Slider from "react-slick";
-// Required CSS imports
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+
+
 
 function HomeCarousel() {
   const settings = {
@@ -16,10 +19,10 @@ function HomeCarousel() {
     pauseOnHover: true,
     arrows: true,
     cssEase: "linear",
-    dotsClass: "slick-dots custom-dots" // Add custom class for dots
+    dotsClass: "slick-dots custom-dots" 
   };
 
-  // Restaurant food images with dinner images
+ 
   const foodImages = [
     {
       id: 1,
@@ -40,6 +43,9 @@ function HomeCarousel() {
 
   return (
     <div className="slider-container w-full mx-auto relative">
+   
+      <Text />
+      
       <style jsx>{`
         .slick-prev, .slick-next {
           z-index: 10;
@@ -121,4 +127,12 @@ function HomeCarousel() {
   );
 }
 
+const Text = () => {
+    return (
+      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 text-center z-50 text-white w-full px-4">
+        <h1 className="text-7xl font-bold mb-4 drop-shadow-lg">Welcome to our Restaurant</h1>
+        <p className="text-3xl drop-shadow-md">Enjoy the best food in town</p>
+      </div>
+    );
+  };
 export default HomeCarousel;
