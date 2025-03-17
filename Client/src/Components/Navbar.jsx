@@ -3,7 +3,7 @@ import { FaHeart, FaExchangeAlt, FaShoppingCart, FaUtensils } from 'react-icons/
 
 const Navbar = () => {
   return (
-    <nav className="bg-white shadow-md fixed top-5 left-1/2 transform -translate-x-1/2 z-10 w-5/6 max-w-7xl h-24 rounded-lg flex items-center">
+    <nav className="bg-white shadow-md absolute top-5 left-1/2 transform -translate-x-1/2 z-10 w-5/6 max-w-7xl h-24 rounded-lg flex items-center">
       <div className="px-4 py-2 flex justify-between items-center w-full">
         <div className='flex items-center space-x-4 gap-3'>
         <div className="flex items-center">
