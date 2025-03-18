@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaHeart, FaExchangeAlt, FaShoppingCart, FaUtensils } from 'react-icons/fa'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -28,13 +29,13 @@ const Navbar = () => {
           </div>
         </div>
         <ul className="flex space-x-6">
-          <li><a href="#" className="text-gray-700 hover:text-green-600">HOME</a></li>
-          <li><a href="#" className="text-gray-700 hover:text-green-600">ABOUT US</a></li>
-          <li><a href="#" className="text-gray-700 hover:text-green-600">SHOP</a></li>
-          <li><a href="#" className="text-gray-700 hover:text-green-600">CONTACT US</a></li>
-          <li><a href="#" className="text-gray-700 hover:text-green-600">PAGES</a></li>
-          <li><a href="#" className="text-gray-700 hover:text-green-600">CART</a></li>
-        </ul>
+            <li><Link to="/" className="text-gray-700 hover:text-green-600">HOME</Link></li>
+            <li><Link to="/aboutus" className="text-gray-700 hover:text-green-600">ABOUT US</Link></li>
+            <li><Link to="/shop" className="text-gray-700 hover:text-green-600">SHOP</Link></li>
+            <li><Link to="/contactus" className="text-gray-700 hover:text-green-600">CONTACT US</Link></li>
+            <li><a href="#" className="text-gray-700 hover:text-green-600">PAGES</a></li>
+            <li><Link to="/cart" className="text-gray-700 hover:text-green-600">CART</Link></li>
+          </ul>
         </div>
         <div className="flex items-center space-x-4">
           <a href="#" className="text-gray-700 hover:text-green-600">LOGIN / REGISTER</a>
