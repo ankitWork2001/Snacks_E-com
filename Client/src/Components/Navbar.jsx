@@ -38,7 +38,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center space-x-4">
-          <a href="#" className="text-gray-700 hover:text-green-600">LOGIN / REGISTER</a>
+          <a href="login" className="text-gray-700 hover:text-green-600">LOGIN / REGISTER</a>
           <div className="relative">
             <FaHeart className="text-gray-700 hover:text-green-600 text-xl" />
             <span className="absolute -top-1 -right-1 bg-green-600 text-white rounded-full h-3.5 w-3.5 flex items-center justify-center text-[8px]">0</span>

@@ -5,6 +5,8 @@ import ContactUs from "./Pages/ContactUs.jsx"
 import Cart from "./Pages/Cart.jsx"
 import Shop from "./Pages/Shop.jsx"
 import Footer from "./Components/Footer.jsx"
+import Login from "./Pages/Login.jsx"
+import Register from "./Pages/Register.jsx"
 
 
 const router=createBrowserRouter([
@@ -27,6 +29,15 @@ const router=createBrowserRouter([
   {
     path:"/shop",
     element:<Shop/>
+  },
+  {
+    path: "/login",
+    element:<Login/>
+  }
+  ,
+  {
+    path: "/register",
+    element:<Register/>
   }
 ])
 
