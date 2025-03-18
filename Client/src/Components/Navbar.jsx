@@ -1,42 +1,58 @@
-import React, { useState } from 'react'
-import { FaHeart, FaExchangeAlt, FaShoppingCart, FaUtensils, FaChevronDown } from 'react-icons/fa'
+import React, { useState, useEffect } from 'react';
+import { FaHeart, FaExchangeAlt, FaShoppingCart, FaUtensils, FaChevronDown } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="bg-white shadow-md absolute top-5 left-1/2 transform -translate-x-1/2 z-10 w-5/6 max-w-7xl h-24 rounded-lg flex items-center">
-      <div className="px-4 py-2 flex justify-between items-center w-full">
-        <div className='flex items-center space-x-4 gap-3'>
-        <div className="flex items-center">
-          {/* Image logo */}
-          <img 
-            src="https://jrssnacks.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-24-at-13.18.56_dd82a117.jpg" 
-            alt="Logo" 
-            className="h-10 mr-4 rounded"
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.style.display = 'none';
-              e.target.nextSibling.style.display = 'flex';
-            }} 
-          />
-          {/* Fallback icon if image fails to load */}
-          <div className="hidden h-10 w-10 bg-green-600 text-white rounded mr-4 items-center justify-center">
-            <FaUtensils className="text-xl" />
+    <nav
+      className={`fixed left-1/2 transform -translate-x-1/2 z-100 transition-all duration-300 ease-in-out ${
+        isScrolled ? 'top-0 w-full h-16 bg-white shadow-lg rounded-none' : 'top-6 w-5/6 h-24 bg-white shadow-md rounded-lg'
+      } flex items-center px-6`}
+    >
+      <div className="flex justify-between items-center w-full max-w-7xl mx-auto">
+        <div className="flex items-center space-x-4 gap-3">
+          <div className="flex items-center">
+            <img
+              src="https://jrssnacks.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-24-at-13.18.56_dd82a117.jpg"
+              alt="Logo"
+              className="h-10 mr-4 rounded transition-all duration-300"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
+            <div className="hidden h-10 w-10 bg-green-600 text-white rounded mr-4 items-center justify-center">
+              <FaUtensils className="text-xl" />
+            </div>
+            <div>
+              <h1 className={`font-bold transition-all duration-300 ${isScrolled ? 'text-lg' : 'text-xl'}`}>
+                JRS SNACKS
+              </h1>
+              <p className={`text-sm transition-opacity duration-300 ${isScrolled ? 'opacity-0' : 'opacity-100'}`}>
+                UNVEIL THE DELICACY
+              </p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-xl font-bold">JRS SNACKS</h1>
-            <p className="text-sm">UNVEIL THE DELICACY</p>
-          </div>
-        </div>
-        <ul className="flex space-x-6">
+          <ul className="flex space-x-6">
             <li><Link to="/" className="text-gray-700 hover:text-green-600">HOME</Link></li>
             <li><Link to="/aboutus" className="text-gray-700 hover:text-green-600">ABOUT US</Link></li>
             <li><Link to="/shop" className="text-gray-700 hover:text-green-600">SHOP</Link></li>
             <li><Link to="/contactus" className="text-gray-700 hover:text-green-600">CONTACT US</Link></li>
             <li className="relative group">
-              <button 
+              <button
                 className="flex items-center text-gray-700 hover:text-green-600"
                 onMouseEnter={() => setIsDropdownOpen(true)}
                 onMouseLeave={() => setIsDropdownOpen(false)}
@@ -44,7 +60,7 @@ const Navbar = () => {
                 PAGES
                 <FaChevronDown className="ml-1 text-xs" />
               </button>
-              <div 
+              <div
                 className={`absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-lg shadow-lg py-2 ${
                   isDropdownOpen ? 'block' : 'hidden'
                 }`}
@@ -85,7 +101,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
