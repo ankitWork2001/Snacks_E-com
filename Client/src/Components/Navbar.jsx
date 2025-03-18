@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className="flex items-center">
           {/* Image logo */}
           <img 
-            src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" 
+            src="https://jrssnacks.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-24-at-13.18.56_dd82a117.jpg" 
             alt="Logo" 
             className="h-10 mr-4 rounded"
             onError={(e) => {
