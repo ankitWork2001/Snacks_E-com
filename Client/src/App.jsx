@@ -4,6 +4,7 @@ import AboutUs from "./Pages/AboutUs.jsx"
 import ContactUs from "./Pages/ContactUs.jsx"
 import Cart from "./Pages/Cart.jsx"
 import Shop from "./Pages/Shop.jsx"
+import Footer from "./Components/Footer.jsx"
 
 
 const router=createBrowserRouter([
@@ -33,6 +34,7 @@ function App() {
   return (
     <>
       <RouterProvider router={router}/>
+      <Footer/>
     </>
   )
 }
