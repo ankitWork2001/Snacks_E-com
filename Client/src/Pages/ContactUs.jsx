@@ -6,8 +6,18 @@ const ContactUs = () => {
   return (
     <>
       <Navbar />
-      <div className="mt-50">
-        <div></div>
+      <div className="mt-40">
+      <div className="relative h-80 w-[90vw] mx-10 rounded-lg shadow-lg overflow-hidden">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.6649571483426!2d77.53590774450515!3d12.929242454947579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3e194d3fb40d%3A0x5b6a09a1528fe15b!2s4th%20Main%20Rd%2C%20Bengaluru%2C%20Karnataka%2C%20India!5e0!3m2!1sen!2sus!4v1742367186329!5m2!1sen!2sus" 
+            width="100%" 
+            height="100%" 
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
         <div className="flex mt-10 mb-10 ml-10 mr-10 ">
           <div className="w-1/2 border-r-2 border-gray-200 p-6 bg-white shadow-lg rounded-lg">
             <h2 className="text-2xl font-bold text-green-700 mb-2">
