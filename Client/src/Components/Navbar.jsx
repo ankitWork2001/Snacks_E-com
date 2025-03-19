@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { FaHeart, FaExchangeAlt, FaShoppingCart, FaUtensils, FaChevronDown } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
+import { useSelector} from 'react-redux';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
+  const orders = useSelector((state) => state.orderReducer.orders);
+  const total=orders.reduce((acc,order)=>acc+order.quantity,0);
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -96,7 +97,7 @@ const Navbar = () => {
           </div>
           <div className="relative">
             <FaShoppingCart className="text-gray-700 hover:text-green-600 text-xl" />
-            <span className="absolute -top-1 -right-1 bg-green-600 text-white rounded-full h-3.5 w-3.5 flex items-center justify-center text-[8px]">0</span>
+            <span className="absolute -top-1 -right-1 bg-green-600 text-white rounded-full h-3.5 w-3.5 flex items-center justify-center text-[8px]">{total}</span>
           </div>
         </div>
       </div>

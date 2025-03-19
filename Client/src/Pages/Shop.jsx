@@ -200,6 +200,7 @@ const Shop = () => {
                     imageUrl={item?.images[0]}
                     name={item?.name}
                     cost={item?.price}
+                    id={item?._id}
                     className="m-2"
                   />
                 </div>

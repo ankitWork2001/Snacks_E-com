@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import { FaShoppingCart, FaSearch, FaExchangeAlt, FaHeart } from "react-icons/fa";
-
-const Card = ({ imageUrl, name, cost }) => {
+import { useSelector,useDispatch } from "react-redux";
+import { addOrder } from "../Reducer/Order/orderSlice";
+const Card = ({ imageUrl, name, cost, id }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
+  const dispatch=useDispatch();
+
+  const handleAddToCart=()=>{
+    dispatch(addOrder({
+      id:id,
+      name:name,
+      imageUrl:imageUrl,
+      cost:cost,
+      quantity:1
+    }))
+  }
   return (
     <div 
       className="relative bg-white shadow-lg rounded-lg overflow-hidden w-56 h-74 border border-gray-200 hover:shadow-xl transition duration-300"
@@ -25,7 +37,7 @@ const Card = ({ imageUrl, name, cost }) => {
             transform ${isHovered ? 'translate-y-0' : 'translate-y-full'}
           `}
         >
-          <button className="p-2 bg-white hover:bg-green-600 hover:text-white rounded-full transition-colors duration-200">
+          <button onClick={handleAddToCart} className="p-2 bg-white hover:bg-green-600 hover:text-white rounded-full transition-colors duration-200">
             <FaShoppingCart className="text-sm" />
           </button>
           <button className="p-2 bg-white hover:bg-green-600 hover:text-white rounded-full transition-colors duration-200">
