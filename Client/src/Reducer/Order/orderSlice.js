@@ -17,17 +17,8 @@ const orderSlice=createSlice({
                 existingOrder.quantity+=action.payload.quantity;
                 return;
             }
-
             
-            const order={
-                ...action.payload,
-                get total() {
-                    return this.quantity * this.discountedPrice;
-                }
-            }
-            // console.log(order);
-            
-            state.orders.push(order);
+            state.orders.push(action.payload);
         },
         decrementOrder(state,action){
             const id=action.payload.id;
@@ -41,6 +32,7 @@ const orderSlice=createSlice({
         },
         removeOrder(state,action){
             const id=action.payload.id;
+            
             const index=state.orders.findIndex(order=>order.id===id);
             if(index!==-1){
                 state.orders.splice(index,1);
