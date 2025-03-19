@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from "../Components/Navbar"
-import Footer from "../Components/Footer"
+
 const AboutUs = () => {
   return (
     <>
@@ -16,7 +16,7 @@ const AboutUs = () => {
       <p className='m-4 text-2xl text-gray-400'>JRS is a frozen foods manufacturer that not only believes in great taste, but also in a variety of great palates. What began as a humble hustle during the 90s, our products have grown over the years to create an established and well-trusted brand of their own. Each of our snacks is a reflection of our consistent drive to innovate and create nothing less than the best.</p>
      </div>
     </div>
-    <Footer/>
+    
     </>
   );
 }

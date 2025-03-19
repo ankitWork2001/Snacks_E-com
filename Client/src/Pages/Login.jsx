@@ -43,19 +43,71 @@ const Login = () => {
     setError("");
 
     try {
-      let res;
+      let token;
       if (isRegistering) {
         res = await axios.post("http://localhost:3000/api/auth/register", formData);
         alert(res.data.message);
       } else {
-        res = await axios.post("http://localhost:3000/api/auth/login", {
-          email: formData.email,
-          password: formData.password,
+
+        let data = JSON.stringify({
+          "email": formData.email,
+          "password": formData.password
         });
-        alert(res.data.message);
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-        navigate("/");
+        
+        let config = {
+          method: 'post',
+          maxBodyLength: Infinity,
+          url: 'http://localhost:3000/api/auth/login',
+          headers: { 
+            'Content-Type': 'application/json'
+          },
+          data : data
+        };
+        
+        async function makeRequest() {
+          try {
+            const response = await axios.request(config);
+            // console.log(JSON.stringify(response.data));
+            token = response.data.token;
+            localStorage.setItem("token", response.data.token);
+            alert(response.data.message);
+            await makeRequest1();
+            navigate("/");
+          }
+          catch (error) {
+            console.log(error);
+          }
+        }
+        
+        
+        async function makeRequest1() {
+          try {
+            let config1 = {
+              method: 'get',
+              maxBodyLength: Infinity,
+              url: 'http://localhost:3000/api/auth/profile',
+              headers: { 
+                'Authorization': 'bearer ' + token
+              }
+            };
+    
+            
+            const response = await axios.request(config1);
+            // console.log(JSON.stringify(response.data));
+            localStorage.setItem("user", response.data.user.name);
+            // console.log(response.data.user);
+            
+          }
+          catch (error) {
+            console.log(error);
+          }
+        }
+        
+        
+        
+        
+        await makeRequest();
+        
       }
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");

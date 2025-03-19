@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaShoppingCart, FaSearch, FaExchangeAlt, FaHeart } from "react-icons/fa";
 import { useSelector,useDispatch } from "react-redux";
+import { toast } from 'react-toastify';
 import { addOrder } from "../Reducer/Order/orderSlice";
 const Card = ({ imageUrl, name, cost, id }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -18,8 +19,11 @@ const Card = ({ imageUrl, name, cost, id }) => {
       cost:cost,
       quantity:1
     }))
+    toast.success(name +' added to cart');
   }
   return (
+    <>
+    
     <div 
       className="relative bg-white shadow-lg rounded-lg overflow-hidden w-56 h-74 border border-gray-200 hover:shadow-xl transition duration-300"
       onMouseEnter={handleMouseEnter}
@@ -56,6 +60,7 @@ const Card = ({ imageUrl, name, cost, id }) => {
         <p className="text-gray-600 font-medium mt-1 text-center">₹{cost}</p>
       </div>
     </div>
+    </>
   );
 };
 

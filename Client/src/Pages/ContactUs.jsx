@@ -104,7 +104,7 @@ const ContactUs = () => {
                 <textarea class=" w-150 h-40 border-2 border-gray-300 p-3 rounded-md resize-none focus:outline-none focus:ring-1 focus:ring-gray-500 focus:border-gray-500 transition duration-200 block"></textarea>
               </div>
             </form>
-            <button className="mt-4 px-6 py-3 cursor-pointer bg-green-600 text-white font-semibold rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200">
+            <button className="mt-4 px-6 py-3 cursor-pointer bg-emerald-900 text-white font-semibold rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200">
               Ask A Question
             </button>
           </div>
