@@ -7,6 +7,7 @@ import paymentRoutes from "./routes/paymentRoutes.js";
 
 import cors from "cors";
 
+
 const app = express();
 
 app.use(express.json());
@@ -15,6 +16,7 @@ app.use(cors())
 app.get("/", (req,res)=>{
     res.send("Server is running");
 })
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
 connectDB().then(() => {
     console.log(process.env.MONGO_URL);
