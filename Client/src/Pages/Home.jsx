@@ -4,6 +4,7 @@ import HomeCarousel from '../Components/homeCarousel';
 import Snack from "../Components/Snack"
 import Order from '../Components/Order';
 import Gallery from "../Components/Gallery"
+import AboveFooter from '../Components/AboveFooter';
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <Snack/>
       <Gallery/>
       <Order/>
+      <AboveFooter/>
       
     </div>
   );
