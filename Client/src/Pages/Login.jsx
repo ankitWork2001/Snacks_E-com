@@ -45,7 +45,7 @@ const Login = () => {
     try {
       let token;
       if (isRegistering) {
-        res = await axios.post("http://localhost:3000/api/auth/register", formData);
+        const res = await axios.post("http://localhost:3000/api/auth/register", formData);
         alert(res.data.message);
       } else {
 
