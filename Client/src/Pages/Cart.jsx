@@ -127,8 +127,37 @@ const Full = ({ orders, dispatch }) => {
 
 const CartTotals = ({ orders }) => {
   const Total = orders.reduce((sum, item) => sum + item.cost * item.quantity, 0);
-
+  const handleOrder = async () => {
+    let data = JSON.stringify({
+      "items": orders
+    });
+    
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'http://localhost:3000/api/orders/',
+      headers: { 
+        'Authorization': 'Bearer ' + localStorage.getItem('token'), 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    
+    async function makeRequest() {
+      try {
+        const response = await axios.request(config);
+        console.log(JSON.stringify(response.data));
+        alert("Order placed successfully!");
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+    
+    makeRequest();
+  }
   const handlePayment = async () => {
+    
     try {
       const { data } = await axios.post(
         "http://localhost:3000/api/payments/initiate",
@@ -170,6 +199,7 @@ const CartTotals = ({ orders }) => {
             console.error("Verification error:", error);
             alert("Payment verification failed!");
           }
+          handleOrder();
         },
         prefill: {
           name: "Ashish",
@@ -181,6 +211,7 @@ const CartTotals = ({ orders }) => {
 
       const rzp = new window.Razorpay(options);
       rzp.open();
+      
     } catch (error) {
       console.error("Payment error:", error);
       alert("Payment failed!");
