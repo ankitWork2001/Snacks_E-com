@@ -9,21 +9,12 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 const AdminNavbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [username, setUsername] = useState(null);
   const location = useLocation();
   const orders = useSelector((state) => state.orderReducer.orders);
   const total = orders.reduce((acc, order) => acc + order.quantity, 0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     const user = localStorage.getItem("user");
@@ -35,11 +26,7 @@ const AdminNavbar = () => {
 
   return (
     <nav
-      className={`fixed left-1/2 transform -translate-x-1/2 z-100 transition-all duration-300 ease-in-out ${
-        isScrolled
-          ? "top-0 w-full h-16 bg-white shadow-lg rounded-none"
-          : "top-6 w-5/6 h-24 bg-white shadow-md rounded-lg"
-      } flex items-center px-6`}
+      className="fixed left-1/2 flex transform -translate-x-1/2 z-100 transition-all duration-300 ease-in-out top-0 w-full h-16 bg-white shadow-lg rounded-none"  
     >
       <div className="flex justify-between items-center w-full max-w-7xl mx-auto">
         <div className="flex items-center space-x-4 gap-3">
@@ -61,16 +48,12 @@ const AdminNavbar = () => {
             </div>
             <div>
               <h1
-                className={`font-bold transition-all duration-300 ${
-                  isScrolled ? "text-lg" : "text-xl"
-                }`}
+                className="font-bold transition-all duration-300 text-lg" 
               >
                 JRS SNACKS
               </h1>
               <p
-                className={`text-sm transition-opacity duration-300 ${
-                  isScrolled ? "opacity-0" : "opacity-100"
-                }`}
+                className="text-sm transition-opacity duration-300" 
               >
                 UNVEIL THE DELICACY
               </p>
@@ -82,10 +65,7 @@ const AdminNavbar = () => {
                 HOME
               </Link>
             </li>
-            
-            
-            
-            
+
             <li>
               <Link to="/cart" className="text-gray-700 hover:text-green-600">
                 Products
