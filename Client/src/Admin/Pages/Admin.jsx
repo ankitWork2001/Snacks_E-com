@@ -7,7 +7,6 @@ const Admin = () => {
   return (
     <div>
         <AdminNavbar/>
-        <HomeCarousel/>
         <AdminSection/>
     </div>
   )

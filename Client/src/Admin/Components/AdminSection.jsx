@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 
 const AdminSection = () => {
-  const [formData, setFormData] = useState({
+  let [formData, setFormData] = useState({
     name: "",
     images: "",
     description: "",
@@ -53,7 +53,7 @@ const AdminSection = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row bg-gray-100 min-h-screen p-6">
+    <div className="mt-15 flex flex-col md:flex-row bg-gray-100 min-h-screen p-6">
       <div className="md:w-1/3 bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
         <figure>
           <img
