@@ -72,7 +72,15 @@ const Login = () => {
             localStorage.setItem("token", response.data.token);
             alert(response.data.message);
             await makeRequest1();
-            navigate("/");
+            if(response.data.role === "admin"){
+              localStorage.setItem("role", "admin");
+              navigate("/admin");
+            }
+            else{
+              localStorage.setItem("role", "user");
+              navigate("/");
+            }
+            
           }
           catch (error) {
             console.log(error);
