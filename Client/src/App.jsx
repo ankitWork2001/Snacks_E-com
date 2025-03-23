@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Admin from "./Admin/Pages/Admin.jsx";
 import AdminProducts from "./Admin/Pages/AdminProducts.jsx";
 import AdminOrders from "./Admin/Pages/AdminOrders.jsx";
+import UpdateProduct from "./Admin/Pages/UpdateProduct.jsx";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
     path: "/admin/orders",
     element: <AdminOrders/>,
   },
+  {
+    path: "/admin/update-product/:id",
+    element: <UpdateProduct />,
+  }
 ]);
 
 function App() {
