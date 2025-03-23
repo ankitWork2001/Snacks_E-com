@@ -10,6 +10,8 @@ import Register from "./Pages/Register.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Admin from "./Admin/Pages/Admin.jsx";
+import AdminProducts from "./Admin/Pages/AdminProducts.jsx";
+import AdminOrders from "./Admin/Pages/AdminOrders.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin/>,
+  },
+  {
+    path: "/admin/products",
+    element: <AdminProducts/>,
+  },
+  {
+    path: "/admin/orders",
+    element: <AdminOrders/>,
   },
 ]);
 
