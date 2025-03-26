@@ -1,6 +1,7 @@
-import Card from "./Card.jsx";
+import Card from "../Components/Card.jsx";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import AdminNavbar from "../Components/AdminNavbar.jsx";
 
 const Snack = () => {
   const [snacks, setSnacks] = useState();
@@ -99,14 +100,13 @@ const Snack = () => {
     setSnacks(originalSnacks)
   }
   return (
+    <>
+    <AdminNavbar/>
     <div className="p-4 m-4">
       <p className="text-6xl text-emerald-900 font-bold mb-2 text-center">
         Our Snacks
       </p>
-      <h4 className="text-2xl mb-4 text-center">
-        Satisfy your cravings with JRS Snacks – where every bite is a
-        celebration of flavor!
-      </h4>
+     
       <div className="flex m-4 justify-center gap-x-10">
         <button className="font-bold text-gray-600 hover:underline cursor-pointer" onClick={handleAll}>
           ALL
@@ -131,20 +131,21 @@ const Snack = () => {
         </button>
       </div>
       <div className="flex flex-wrap gap-4 justify-center">
-        {snacks?.map((item, index) => {
-          return (
-            <Card
-              key={index}
-              imageUrl={item?.images[0]}
-              name={item?.name}
-              cost={item?.price}
-              id={item?._id}
-              className="m-2"
-            />
-          );
-        })}
-      </div>
+  {snacks?.map((item, index) => {
+    return (
+      <Card
+        key={index}
+        imageUrl={item?.images[0]}
+        name={item?.name}
+        cost={item?.price}
+        id={item?._id}
+        refreshData={() => window.location.reload()} // Refresh page after delete
+      />
+    );
+  })}
+</div>
     </div>
+    </>
   );
 };
 

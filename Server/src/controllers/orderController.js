@@ -63,14 +63,14 @@ const getAllOrders = async (req, res) => {
   
       
       for (let item of items) {
-        const product = await Product.findById(item.product);
+        const product = await Product.findById(item.id);
         if (!product) {
-          return res.status(404).json({ message:" Product not found: ${item.product}" });
+          return res.status(404).json({ message:`Product not found: ${item.id}` });
         }
   
         
         if (product.stock < item.quantity) {
-          return res.status(400).json({ message: "Insufficient stock for ${product.name}" });
+          return res.status(400).json({ message: `Insufficient stock for ${product.name}` });
         }
   
         

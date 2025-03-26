@@ -1,8 +1,18 @@
 import { createSlice} from "@reduxjs/toolkit";
 
-const initialState={
-    orders:[]
-}
+const loadOrdersFromStorage = () => {
+    try {
+      const storedOrders = localStorage.getItem('orders');
+      return storedOrders ? JSON.parse(storedOrders) : [];
+    } catch (error) {
+      console.error('Error loading orders from localStorage:', error);
+      return [];
+    }
+  };
+  
+  const initialState = {
+    orders: loadOrdersFromStorage()
+  };
 
 const orderSlice=createSlice({
     name:"order",
@@ -17,17 +27,8 @@ const orderSlice=createSlice({
                 existingOrder.quantity+=action.payload.quantity;
                 return;
             }
-
             
-            const order={
-                ...action.payload,
-                get total() {
-                    return this.quantity * this.discountedPrice;
-                }
-            }
-            // console.log(order);
-            
-            state.orders.push(order);
+            state.orders.push(action.payload);
         },
         decrementOrder(state,action){
             const id=action.payload.id;
@@ -41,6 +42,7 @@ const orderSlice=createSlice({
         },
         removeOrder(state,action){
             const id=action.payload.id;
+            
             const index=state.orders.findIndex(order=>order.id===id);
             if(index!==-1){
                 state.orders.splice(index,1);

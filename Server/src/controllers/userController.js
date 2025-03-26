@@ -45,9 +45,9 @@ const login=async(req,res)=>{
         if (!isPasswordValid) {
             return res.status(200).json({ message: "Invalid Credentials" });
         }
-        const token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'7d'});
+        const token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'30d'});
         
-        return res.status(200).json({message:"User Logged in Successfully",token});
+        return res.status(200).json({message:"User Logged in Successfully",token,role:user.role});
         
 
     }

@@ -98,7 +98,7 @@ const latestProducts = async (req, res) => {
     try {
       const { name, description, price, stock, category, images } = req.body;
       if (!name || !description || !price || !stock || !category) {
-        return res.status(400).json({ message: "All required fields must be provided" });
+        return res.status(200).json({ message: "All required fields must be provided" });
       }
       const newProduct = await Product.create({
         name,
@@ -115,7 +115,7 @@ const latestProducts = async (req, res) => {
       });
     } catch (error) {
       console.error("Error adding product:", error);
-      return res.status(500).json({ message: "Internal Server Error" });
+      return res.status(200).json({ message: "Internal Server Error" });
     }
   };
 
