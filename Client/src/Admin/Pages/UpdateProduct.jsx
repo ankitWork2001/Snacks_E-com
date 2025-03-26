@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import AdminNavbar from "../Components/AdminNavbar.jsx";
 
 const UpdateProduct = () => {
   const { id } = useParams();
@@ -36,7 +37,9 @@ const UpdateProduct = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
+    <>
+    <AdminNavbar/>
+    <div className="max-w-md mx-auto p-6 my-6 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Update Product</h2>
       <form onSubmit={handleSubmit}>
         <label className="block text-gray-700">Name:</label>
@@ -54,6 +57,7 @@ const UpdateProduct = () => {
         <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">Update</button>
       </form>
     </div>
+    </>
   );
 };
 
