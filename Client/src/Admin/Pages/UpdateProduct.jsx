@@ -12,7 +12,7 @@ const UpdateProduct = () => {
   useEffect(() => {
     axios
       .get(`http://localhost:3000/api/products/${id}`, {
-        headers: { Authorization: `${import.meta.env.VITE_APP_TOKEN}` },
+        headers: { Authorization: `bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => setProduct(response.data.product))
       .catch((error) => console.error("Error fetching product:", error));
@@ -26,7 +26,7 @@ const UpdateProduct = () => {
     e.preventDefault();
     try {
       await axios.put(`http://localhost:3000/api/products/${id}`, product, {
-        headers: { Authorization: `${import.meta.env.VITE_APP_TOKEN}` },
+        headers: { Authorization: `bearer ${localStorage.getItem("token")}` },
       });
       toast.success("Product updated successfully!");
       navigate("/admin/products");

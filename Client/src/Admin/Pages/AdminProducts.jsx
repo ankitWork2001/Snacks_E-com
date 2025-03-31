@@ -14,7 +14,7 @@ const Snack = () => {
       url: "http://localhost:3000/api/products/",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `${import.meta.env.VITE_APP_TOKEN}`,
+        Authorization: `bearer ${localStorage.getItem("token")}`,
       },
     };
     async function makeRequest() {
@@ -36,7 +36,7 @@ const Snack = () => {
       url: "http://localhost:3000/api/products/latest",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `${import.meta.env.VITE_APP_TOKEN}`,
+        Authorization: `bearer ${localStorage.getItem("token")}`,
       },
     };
     async function makeRequest() {
@@ -58,7 +58,7 @@ const Snack = () => {
       url: "http://localhost:3000/api/products/category/67d1314d8fb5c68631e6d3ba",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `${import.meta.env.VITE_APP_TOKEN}`,
+        Authorization: `bearer ${localStorage.getItem("token")}`,
       },
     };
     async function makeRequest() {
@@ -80,7 +80,7 @@ const Snack = () => {
       url: "http://localhost:3000/api/products/category/67d131748fb5c68631e6d3bb",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `${import.meta.env.VITE_APP_TOKEN}`,
+        Authorization: `bearer ${localStorage.getItem("token")}`,
       },
     };
     async function makeRequest() {

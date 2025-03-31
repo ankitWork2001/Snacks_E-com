@@ -23,7 +23,7 @@ const AdminSection = () => {
       url: "http://localhost:3000/api/products/",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `${import.meta.env.VITE_APP_TOKEN}`,
+        Authorization: `bearer ${localStorage.getItem("token")}`,
       },
       data:JSON.stringify(formData)
     };
